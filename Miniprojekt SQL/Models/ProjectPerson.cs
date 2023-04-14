@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Miniprojekt_SQL.Models
-{    public class ProjectPerson
+{
+    [Table("mgu_project_person")] //Pointing to table name
+    public class ProjectPerson
     {
-        public int Id { get; set; }
-        public int ProjectId { get; set; }
-        public int PersonId { get; set; }
-        public int Hours { get; set; }
+        public int id { get; set; } //properties match columns, but shout be PascalCase
+        public int project_id { get; set; }
+        public int person_id { get; set; }
+        public int hours { get; set; }
     }
 }
