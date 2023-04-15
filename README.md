@@ -50,39 +50,39 @@ No log-in required. The applications provides the information necessary to test 
 If you would like to contribute to this project, please feel free to submit a pull request on the Git repository.
 
 ## SQL-Dump
-`DROP TABLE IF EXISTS "public"."mgu_project";
-DROP TABLE IF EXISTS "public"."mgu_project_person";
-DROP TABLE IF EXISTS "public"."mgu_person";
-CREATE TABLE "public"."mgu_project" ( 
-  "id" SERIAL,
-  "project_name" VARCHAR(50) NOT NULL,
-  CONSTRAINT "mgu_project_pkey" PRIMARY KEY ("id")
-);
-CREATE TABLE "public"."mgu_project_person" ( 
-  "id" SERIAL,
-  "project_id" INTEGER NOT NULL,
-  "person_id" INTEGER NOT NULL,
-  "hours" INTEGER NOT NULL,
-  CONSTRAINT "mgu_project_person_pkey" PRIMARY KEY ("id")
-);
-CREATE TABLE "public"."mgu_person" ( 
-  "id" SERIAL,
-  "person_name" VARCHAR(25) NOT NULL,
-  CONSTRAINT "mgu_person_pkey" PRIMARY KEY ("id")
-);
-INSERT INTO "public"."mgu_project" ("id", "project_name") VALUES (1, 'C# Studying');
-INSERT INTO "public"."mgu_project" ("id", "project_name") VALUES (2, 'Databashantering');
-INSERT INTO "public"."mgu_project" ("id", "project_name") VALUES (3, 'Bosses lekstund');
-INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (1, 1, 1, 499);
-INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (2, 1, 2, 20);
-INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (3, 2, 1, 20);
-INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (5, 2, 3, 50);
-INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (7, 3, 4, 5);
-INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (8, 3, 1, 50);
-INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (1, 'Franky Sinatry');
-INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (2, 'Gert Götebritta');
-INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (3, 'Pelle Svanslös');
-INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (4, 'Bosse');
-ALTER TABLE "public"."mgu_project_person" ADD CONSTRAINT "FK_mgu_project_person_project_id" FOREIGN KEY ("project_id") REFERENCES "public"."mgu_project" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."mgu_project_person" ADD CONSTRAINT "FK_mgu_person_project_person_id" FOREIGN KEY ("person_id") REFERENCES "public"."mgu_person" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;`
+`DROP TABLE IF EXISTS "public"."mgu_project";   
+DROP TABLE IF EXISTS "public"."mgu_project_person";   
+DROP TABLE IF EXISTS "public"."mgu_person";   
+CREATE TABLE "public"."mgu_project" (    
+  "id" SERIAL,   
+  "project_name" VARCHAR(50) NOT NULL,   
+  CONSTRAINT "mgu_project_pkey" PRIMARY KEY ("id")   
+);   
+CREATE TABLE "public"."mgu_project_person" (    
+  "id" SERIAL,   
+  "project_id" INTEGER NOT NULL,   
+  "person_id" INTEGER NOT NULL,   
+  "hours" INTEGER NOT NULL,   
+  CONSTRAINT "mgu_project_person_pkey" PRIMARY KEY ("id")   
+);   
+CREATE TABLE "public"."mgu_person" (    
+  "id" SERIAL,   
+  "person_name" VARCHAR(25) NOT NULL,   
+  CONSTRAINT "mgu_person_pkey" PRIMARY KEY ("id")   
+);   
+INSERT INTO "public"."mgu_project" ("id", "project_name") VALUES (1, 'C# Studying');   
+INSERT INTO "public"."mgu_project" ("id", "project_name") VALUES (2, 'Databashantering');   
+INSERT INTO "public"."mgu_project" ("id", "project_name") VALUES (3, 'Bosses lekstund');   
+INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (1, 1, 1, 499);   
+INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (2, 1, 2, 20);   
+INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (3, 2, 1, 20);   
+INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (5, 2, 3, 50);   
+INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (7, 3, 4, 5);   
+INSERT INTO "public"."mgu_project_person" ("id", "project_id", "person_id", "hours") VALUES (8, 3, 1, 50);   
+INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (1, 'Franky Sinatry');   
+INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (2, 'Gert Götebritta');   
+INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (3, 'Pelle Svanslös');   
+INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (4, 'Bosse');   
+ALTER TABLE "public"."mgu_project_person" ADD CONSTRAINT "FK_mgu_project_person_project_id" FOREIGN KEY ("project_id") REFERENCES "public"."mgu_project" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;   
+ALTER TABLE "public"."mgu_project_person" ADD CONSTRAINT "FK_mgu_person_project_person_id" FOREIGN KEY ("person_id") REFERENCES "public"."mgu_person" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;`   
 
