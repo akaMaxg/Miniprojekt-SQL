@@ -24,7 +24,7 @@ namespace Miniprojekt_SQL.Services
             }
         }
 
-        public void CreateProject(string projectName)
+        public void CreateProject(string projectName)//takes a string and creates a new instance of project object where it sets the name to entered paramete
         {
             using (var dbContext = new AppDbContext(connectionString))
             {
@@ -34,7 +34,7 @@ namespace Miniprojekt_SQL.Services
             }
         }
 
-        public void RegisterTime(int projectId, int personId, int hours)
+        public void RegisterTime(int projectId, int personId, int hours) //takes a three parameters and creates an entry of ProjectPerson where it sets which Person worked how many hours on which Project.
         {
             using (var dbContext = new AppDbContext(connectionString))
             {
@@ -44,19 +44,20 @@ namespace Miniprojekt_SQL.Services
             }
         }
 
-        public void GetPersonAndTimeListRegisteredOnProjectId(int personId)
+        public void GetProjectsAndTimeListRegisteredForPerson(int personId) // method that lists every project and the time spent for a specific person
         {
             using (var dbContext = new AppDbContext(connectionString))
             {
-                var result = from pp in dbContext.ProjectPerson //LINQ query 
-                             join p in dbContext.Person on pp.person_id equals p.id // sets person_id = projectperson rows. called p.id
-                             join proj in dbContext.Project on pp.project_id equals proj.id // Same but sets project_id to projectperson rows, called proj.id
-                             where p.id == personId // person_id
+                //LINQ query 
+                var result = from pp in dbContext.ProjectPerson 
+                             join p in dbContext.Person on pp.person_id equals p.id // sets person_id = projectperson rows - called p.id
+                             join proj in dbContext.Project on pp.project_id equals proj.id // same but sets project_id to projectperson rows - called proj.id
+                             where p.id == personId // condition
                              group pp by proj.project_name into projGroup // group by project_name
-                             select new //creates a new entry/row/object with columns ->
+                             select new //creates a new row with columns ->
                              {
-                                 ProjectName = projGroup.Key, //Comes from person_name column in Person
-                                 TotalHours = projGroup.Sum(pp => pp.hours), //Comes from project_name column in Project
+                                 ProjectName = projGroup.Key, //value from person_name column in Person
+                                 TotalHours = projGroup.Sum(pp => pp.hours), //value from project_name column in Project
                              };
                 foreach (var entry in result)
                 {
@@ -65,40 +66,42 @@ namespace Miniprojekt_SQL.Services
             }
         }
 
-        public void GetPersonsListRegisteredOnProjectId(int projectId)
+        public void GetPersonsListRegisteredOnProjectId(int projectId) // method that lists every person and their time registered on a project
         {
             using (var dbContext = new AppDbContext(connectionString))
             {
-                var project = dbContext.Project.Find(projectId);
-                var result = from pp in dbContext.ProjectPerson //LINQ query 
-                             join p in dbContext.Person on pp.person_id equals p.id // sets person_id = projectperson rows. called p.id
-                             join proj in dbContext.Project on pp.project_id equals proj.id // Same but sets project_id to projectperson rows, called proj.id
-                             where proj.id == projectId // project_id
+                var project = dbContext.Project.Find(projectId); //to present selection
+                //LINQ query
+                var result = from pp in dbContext.ProjectPerson  
+                             join p in dbContext.Person on pp.person_id equals p.id // sets person_id = projectperson rows - called p.id
+                             join proj in dbContext.Project on pp.project_id equals proj.id // same but sets project_id to projectperson rows - called proj.id
+                             where proj.id == projectId // condition
                              group pp by p.person_name into persGroup // group by project_name
-                             select new //creates a new entry/row/object with columns ->
+                             select new //creates a new row with columns ->
                              {
-                                 PersonName = persGroup.Key, //Comes from person_name column in Person
-                                 TotalHours = persGroup.Sum(pp => pp.hours), //Comes from person_name column in person
+                                 PersonName = persGroup.Key, //value from person_name column in Person
+                                 TotalHours = persGroup.Sum(pp => pp.hours), //value from person_name column in person
                              };
-                Console.WriteLine($"Project: {project.project_name}\n");
+                Console.WriteLine($"Project: {project.project_name}\n"); //presents selection
                 foreach (var entry in result)
                 {
                     Console.WriteLine($"Name: {entry.PersonName}, Hours: {entry.TotalHours}\n");
                 }
             }
         }
-        public void EntriesLog()
+        public void EntriesLog() // lists all time-registration entries
         {
             using (var dbContext = new AppDbContext(connectionString))
             {
-                var result = from pp in dbContext.ProjectPerson //LINQ query 
-                             join p in dbContext.Person on pp.person_id equals p.id // sets person_id = projectperson rows. called p.id
-                             join proj in dbContext.Project on pp.project_id equals proj.id // Same but sets project_id to projectperson rows, called proj.id
-                             select new //creates a new entry/row/object with columns ->
+                //LINQ query 
+                var result = from pp in dbContext.ProjectPerson 
+                             join p in dbContext.Person on pp.person_id equals p.id
+                             join proj in dbContext.Project on pp.project_id equals proj.id 
+                             select new // to get their value rather than id
                              {
-                                 PersonName = p.person_name, //Comes from person_name column in Person
-                                 ProjectName = proj.project_name, //Comes from project_name column in Project
-                                 Hours = pp.hours //Comes from Hours column in ProjectPerson
+                                 PersonName = p.person_name,
+                                 ProjectName = proj.project_name, 
+                                 Hours = pp.hours 
                              };
                 foreach (var entry in result)
                 {

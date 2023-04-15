@@ -3,9 +3,9 @@
 namespace Miniprojekt_SQL.Models
 {
     [Table("mgu_person")] //Pointing to table name
-    public class Person
+    public class Person //person object
     {
-        public int id { get; set; } //properties match columns, but shout be PascalCase
+        public int id { get; set; } //properties match columns, but should be PascalCase
         public string person_name { get; set; }
     }
 }

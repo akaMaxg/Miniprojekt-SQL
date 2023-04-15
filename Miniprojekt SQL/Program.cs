@@ -17,7 +17,7 @@ namespace Miniprojekt_SQL
     {
         static void Main(string[] args)
         {
-            Helper.Meny();
+            Helper.Meny(); //runs program
         }
     }
 }

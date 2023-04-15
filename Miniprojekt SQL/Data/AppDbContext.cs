@@ -12,7 +12,7 @@ namespace Miniprojekt_SQL.Data
     {
         private readonly string connectionString; //Prevents unintentional modification to connection string
 
-        public AppDbContext(string connectionString) //Constructor, a string parameter which sets the instance to the input string
+        public AppDbContext(string connectionString) //Constructor, a connectionstring parameter which sets the string to the instance
         {
             this.connectionString = connectionString;
         }

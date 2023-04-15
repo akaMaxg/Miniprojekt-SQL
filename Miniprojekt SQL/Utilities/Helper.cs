@@ -12,7 +12,7 @@ namespace Miniprojekt_SQL.Utilities
 {
     public class Helper
     {
-        public static void Meny()
+        public static void Meny() //Menu that lists options and provides functionality. 
         {
             string connectionString = ConnectionStringHelper.GetConnectionString();
             Console.Write("\nChoose an option by typing the meny-number.");
@@ -31,13 +31,13 @@ namespace Miniprojekt_SQL.Utilities
             Console.Write("Enter your choice: ");
             int choice = int.Parse(Console.ReadLine());
             TimeReportingService timeReportingService = new TimeReportingService(connectionString); //New Timereporting service instance
-            MenuFunctions(choice, timeReportingService);
+            MenuFunctions(choice, timeReportingService); //Runs switchcase
 
         }
 
         public static void MenuFunctions(int choice, TimeReportingService timeReportingService)
         {
-            switch (choice)
+            switch (choice) //Re-runs menu if CRUD operations are successfull, 9 just breaks loop
             {
                 case 1:
                     Console.Write("Enter person name: ");
@@ -55,10 +55,10 @@ namespace Miniprojekt_SQL.Utilities
                     break;
                 case 3:
                     timeReportingService.GetAllProjects();
-                    Console.Write("Enter project ID: ");
+                    Console.Write("Enter project: ");
                     int projectId = int.Parse(Console.ReadLine());
                     timeReportingService.GetAllPersons();
-                    Console.Write("Enter person ID: ");
+                    Console.Write("Enter person: ");
                     int personIdRegister = int.Parse(Console.ReadLine());
                     Console.Write("Enter hours worked: ");
                     int hours = int.Parse(Console.ReadLine());
@@ -84,15 +84,15 @@ namespace Miniprojekt_SQL.Utilities
                     break;
                 case 7:
                     timeReportingService.GetAllPersons();
-                    Console.Write("\nEnter person ID: ");
+                    Console.Write("\nEnter person: ");
                     int personIdList = int.Parse(Console.ReadLine());
                     Console.WriteLine("______________________________________________________________\n");
-                    timeReportingService.GetPersonAndTimeListRegisteredOnProjectId(personIdList);
+                    timeReportingService.GetProjectsAndTimeListRegisteredForPerson(personIdList);
                     Meny();
                     return;
                 case 8:
                     timeReportingService.GetAllProjects();
-                    Console.Write("\nEnter project ID: ");
+                    Console.Write("\nEnter project: ");
                     int projectIdList = int.Parse(Console.ReadLine());
                     Console.WriteLine("______________________________________________________________\n");
                     timeReportingService.GetPersonsListRegisteredOnProjectId(projectIdList);

@@ -11,7 +11,7 @@ namespace Miniprojekt_SQL.Utilities
     {
         public static string GetConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["Default"].ConnectionString; //method to retrieve connectionstring
         }
     }
 }
