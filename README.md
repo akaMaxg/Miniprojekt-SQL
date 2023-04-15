@@ -50,7 +50,7 @@ No log-in required. The applications provides the information necessary to test 
 If you would like to contribute to this project, please feel free to submit a pull request on the Git repository.
 
 ## SQL-Dump
-`DROP TABLE IF EXISTS "public"."mgu_project";   
+DROP TABLE IF EXISTS "public"."mgu_project";   
 DROP TABLE IF EXISTS "public"."mgu_project_person";   
 DROP TABLE IF EXISTS "public"."mgu_person";   
 CREATE TABLE "public"."mgu_project" (    
@@ -84,5 +84,5 @@ INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (2, 'Gert Götebr
 INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (3, 'Pelle Svanslös');   
 INSERT INTO "public"."mgu_person" ("id", "person_name") VALUES (4, 'Bosse');   
 ALTER TABLE "public"."mgu_project_person" ADD CONSTRAINT "FK_mgu_project_person_project_id" FOREIGN KEY ("project_id") REFERENCES "public"."mgu_project" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;   
-ALTER TABLE "public"."mgu_project_person" ADD CONSTRAINT "FK_mgu_person_project_person_id" FOREIGN KEY ("person_id") REFERENCES "public"."mgu_person" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION;`   
+ALTER TABLE "public"."mgu_project_person" ADD CONSTRAINT "FK_mgu_person_project_person_id" FOREIGN KEY ("person_id") REFERENCES "public"."mgu_person" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION; 
 
