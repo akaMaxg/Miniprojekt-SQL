@@ -8,39 +8,37 @@ This console application was developed in **C#** and utilizes a **PostgreSQL** d
 
 The program revolves around two primary objects *Person* and *Project* with list of properties derived from their database tables. The application also contains a number of classes and functionality as per required by the assignment:
 
-->  Projektet ska byggas i Visual Studio med C# och .NET Core 6 som en Console Application   
-	- OK   
-->  Alla namn på filer, variabler, metoder etc ska vara på engelska   
-	- OK   
-->  Det ska gå att skapa personer samt projekt   
-	- OK, TimeReportingServices class contains methods that can create both object and persist them to DB.   
-->  Det ska gå att registrera arbetad tid på ett projekt så att det på något sätt syns i databasen
-	- OK, TimeReportingServices class contains methods that can add 'hours' to entries in ProjectPerson DB table   
-->  Projektet måste innehålla minst tre olika metoder/funktioner som du skapat själv
-	- OK, All are created by me   
-->  Projektet måste versionshanteras med Git. Du ska ha sparat löpande till Github under arbetet.
-	- OK   
-->  Det ska finnas en del kommentarer i koden. Dels som förklarar vad varje metod eller del av koden gör (ex. de olika funktionerna i programmet) samt kommentarer för kodrader som inte är helt uppenbara vad de gör eller hur de fungerar.
-	- OK, code is commented   
-->  Du ska lägga alla anrop till databasen i en separat klass, som inte innehåller någon meny eller annan logik, se PostgresDataAccess.csLinks to an external site.   
-	- OK, all CRUD-operations in Services-Folder and class TimeReportingServices   
-->  Du behöver lägga in åtminstone en person och ett projekt i databasen, med din kod eller DBGate
-	- OK, Few entries made   
-->  Skapa en databas-dump och döp den till database.sql som ska innehålla strukturen samt exempeldatan du skapat.
-	- OK, See "SQL-Dump"   
-->  Ingen insert i programmet får skicka med "id" i SQL, dvs ni får inte inserta med primary key satt, detta ska postgres ta hand om.
-	- OK, All CRUD operations are handled by Entitity Framework through LINQ.  
-->  Användaren får inte mata in ID i någon del av programmet. Däremot val i meny, t.ex 1, 2, 3 är helt OK   
-	- OK, User selects from list of persons/projects - not based off ID.
+*Projektet ska byggas i Visual Studio med C# och .NET Core 6 som en Console Application*   
+- OK   
+*Alla namn på filer, variabler, metoder etc ska vara på engelska*   
+- OK   
+*Det ska gå att skapa personer samt projekt*   
+- Ok, TimeReportingServices class contains methods that can create both object and persist them to DB   
+*Det ska gå att registrera arbetad tid på ett projekt så att det på något sätt syns i databasen*   
+- OK, TimeReportingServices class contains methods that can add 'hours' to entries in ProjectPerson DB table    
+*Projektet måste innehålla minst tre olika metoder/funktioner som du skapat själv*   
+- OK, All are created by MGu   
+*Projektet måste versionshanteras med Git. Du ska ha sparat löpande till Github under arbetet*   
+- OK   
+*Det ska finnas en del kommentarer i koden. Dels som förklarar vad varje metod eller del av koden gör (ex. de olika funktionerna i programmet) samt kommentarer för kodrader som inte är helt uppenbara vad de gör eller hur de fungerar*
+- OK, code is commented   
+*Du ska lägga alla anrop till databasen i en separat klass, som inte innehåller någon meny eller annan logik, se PostgresDataAccess.csLinks*   
+- OK, all CRUD-operations in Services-Folder and class TimeReportingServices   
+*Du behöver lägga in åtminstone en person och ett projekt i databasen, med din kod eller DBGate*   
+- OK, Few entries made   
+*Skapa en databas-dump och döp den till database.sql som ska innehålla strukturen samt exempeldatan du skapat*   
+- OK, See "SQL-Dump"   
+*Ingen insert i programmet får skicka med "id" i SQL, dvs ni får inte inserta med primary key satt, detta ska postgres ta hand om*   
+- OK, All CRUD operations are handled by Entitity Framework through LINQ   
+*Användaren får inte mata in ID i någon del av programmet. Däremot val i meny, t.ex 1, 2, 3 är helt OK*   
+- OK, User selects from list of persons/projects - not based off ID.
 
 ### Additional functionality
--> Used Entity Framework
+-> Used *Entity Framework*
  
-
 ## To run program
 1.  Download or clone the project files from the Git repository.  
-2.  Ensure that the required filed are downloaded from **Trello** administrative column and then placed in appropriate folders.  
-3.  Open the solution or project in an C# IDE.  
+2.  Open the solution or project in an C# IDE.  
 3.  Build the project by pressing F6 or navigating to Build > Build Solution.    
 
 -- *Ensure that the key for the connection string is added to the app.config* --  
