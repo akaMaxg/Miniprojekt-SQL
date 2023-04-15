@@ -24,7 +24,7 @@ namespace Miniprojekt_SQL.Data
             optionsBuilder.UseNpgsql(connectionString);
         }
 
-        // Models that represent database tables, set as Dbset to allow for CRUD
+        // Models that represent database tables, set as Dbset<entity> will allow for CRUD
         public DbSet<Project> Project { get; set; }
         public DbSet<Person> Person { get; set; }
         public DbSet<ProjectPerson> ProjectPerson { get; set; }
